@@ -1,0 +1,27 @@
+[2024-03-20T04:25:45.195+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_cron_expression_v1.first_task manual__2024-03-20T04:25:44.018312+00:00 [queued]>
+[2024-03-20T04:25:45.199+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_cron_expression_v1.first_task manual__2024-03-20T04:25:44.018312+00:00 [queued]>
+[2024-03-20T04:25:45.199+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 6
+[2024-03-20T04:25:45.204+0000] {taskinstance.py:2217} INFO - Executing <Task(BashOperator): first_task> on 2024-03-20 04:25:44.018312+00:00
+[2024-03-20T04:25:45.206+0000] {standard_task_runner.py:60} INFO - Started process 10985 to run task
+[2024-03-20T04:25:45.208+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'dag_with_cron_expression_v1', 'first_task', 'manual__2024-03-20T04:25:44.018312+00:00', '--job-id', '54', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_cron_expression.py', '--cfg-path', '/tmp/tmphfrem0xr']
+[2024-03-20T04:25:45.209+0000] {standard_task_runner.py:88} INFO - Job 54: Subtask first_task
+[2024-03-20T04:25:45.225+0000] {task_command.py:423} INFO - Running <TaskInstance: dag_with_cron_expression_v1.first_task manual__2024-03-20T04:25:44.018312+00:00 [running]> on host be400aaaf05d
+[2024-03-20T04:25:45.252+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Hitesh' AIRFLOW_CTX_DAG_ID='dag_with_cron_expression_v1' AIRFLOW_CTX_TASK_ID='first_task' AIRFLOW_CTX_EXECUTION_DATE='2024-03-20T04:25:44.018312+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-20T04:25:44.018312+00:00'
+[2024-03-20T04:25:45.253+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2024-03-20T04:25:45.253+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'Hello world!']
+[2024-03-20T04:25:45.257+0000] {subprocess.py:86} INFO - Output:
+[2024-03-20T04:25:45.258+0000] {subprocess.py:93} INFO - /usr/bin/bash: line 1: Hello: command not found
+[2024-03-20T04:25:45.259+0000] {subprocess.py:97} INFO - Command exited with return code 127
+[2024-03-20T04:25:45.265+0000] {taskinstance.py:2731} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 444, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 414, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 127.
+[2024-03-20T04:25:45.268+0000] {taskinstance.py:1149} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_with_cron_expression_v1, task_id=first_task, execution_date=20240320T042544, start_date=20240320T042545, end_date=20240320T042545
+[2024-03-20T04:25:45.275+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 54 for task first_task (Bash command failed. The command returned a non-zero exit code 127.; 10985)
+[2024-03-20T04:25:45.308+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-03-20T04:25:45.316+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check
